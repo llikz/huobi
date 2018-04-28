@@ -2,11 +2,13 @@
 <litepal>
     <dbname value="hongli" ></dbname>
 
-    <version value="10" ></version>
+    <version value="13" ></version>
 
     <list>
         <mapping class="cn.grass.gate.model.StoreTest"></mapping>
         <mapping class="cn.grass.gate.model.Box"></mapping>
         <mapping class="cn.grass.gate.model.Meter"></mapping>
+        <mapping class="cn.grass.gate.beans.Price"></mapping>
+        <mapping class="cn.grass.gate.model.HuoBiData"></mapping>
     </list>
 </litepal>

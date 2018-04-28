@@ -1,10 +1,12 @@
 package cn.grass.gate.beans;
 
+import org.litepal.crud.DataSupport;
+
 /**
  * Created by intel on 2018/4/26.
  */
 
-public class Price {
+public class Price extends DataSupport {
 
 
     /**
@@ -109,5 +111,21 @@ public class Price {
 
     public void setBuy_rate(double buy_rate) {
         this.buy_rate = buy_rate;
+    }
+
+    @Override
+    public String toString() {
+        return "Price{" +
+                "createdAt='" + createdAt + '\'' +
+                ", rate_24h_ago=" + rate_24h_ago +
+                ", max_rate=" + max_rate +
+                ", userModifyId=" + userModifyId +
+                ", id='" + id + '\'' +
+                ", sell_rate=" + sell_rate +
+                ", min_rate=" + min_rate +
+                ", userAddId=" + userAddId +
+                ", updatedAt=" + updatedAt +
+                ", buy_rate=" + buy_rate +
+                '}';
     }
 }

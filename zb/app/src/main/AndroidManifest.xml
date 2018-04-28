@@ -34,10 +34,9 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
     <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
-    <!--用于读取手机当前的状态-->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
     <!--用于申请调用A-GPS模块-->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
+
     <!--极光-->
     <!-- Required -->
     <permission
@@ -68,16 +67,16 @@
         </activity>
         <!--首页-->
         <!--<activity-->
-            <!--android:name="cn.grass.meter.MainActivity"-->
-            <!--android:launchMode="singleTask"-->
-            <!--android:screenOrientation="portrait"-->
-            <!--android:windowSoftInputMode="adjustPan" />-->
+        <!--android:name="cn.grass.meter.MainActivity"-->
+        <!--android:launchMode="singleTask"-->
+        <!--android:screenOrientation="portrait"-->
+        <!--android:windowSoftInputMode="adjustPan" />-->
 
         <!--登录-->
         <activity
             android:name="cn.grass.gate.activitys.LoginActivity"
-            android:theme="@style/AppThemeWhite"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeWhite" />
         <!--引导页-->
         <activity
             android:name="cn.grass.gate.activitys.FirstPageActivity"
@@ -119,8 +118,7 @@
         <!--测试-->
         <activity
             android:name="cn.grass.gate.activitys.TestActivity"
-            android:screenOrientation="portrait"
-           />
+            android:screenOrientation="portrait" />
         <!--扫描-->
         <!--旧表箱-->
         <activity
@@ -160,10 +158,6 @@
             android:screenOrientation="portrait" />
 
 
-
-
-
-
         <!--台区详情-->
         <!--工作规范-->
         <activity
@@ -188,8 +182,8 @@
         <!--搜索文章-->
         <activity
             android:name="cn.grass.gate.activitys.SearchArticleActivity"
-            android:theme="@style/AppThemeGray"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeGray" />
         <!--高德-->
 
         <!-- 监听通知点击或者忽略处理的广播 -->
@@ -297,7 +291,7 @@
         <activity
             android:name="cn.grass.gate.share.WBUMShareActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -312,21 +306,23 @@
         <activity
             android:name="com.umeng.qq.tencent.AuthActivity"
             android:launchMode="singleTask"
-            android:noHistory="true" >
+            android:noHistory="true">
 
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="tencent100424468" />
             </intent-filter>
         </activity>
 
         <activity
             android:name="com.umeng.qq.tencent.AssistActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            android:configChanges="orientation|keyboardHidden|screenSize"/>
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <!--友盟分享end-->
         <!-- Umeng的长连服务，用来建立推送的长连接的 -->
         <!-- 【应用包名】字符串需要替换成本应用的应用包名 -->
@@ -335,7 +331,7 @@
             android:exported="true"
             android:label="PushService"
             android:process=":push">
-           <!-- android:process=":push"-->
+            <!-- android:process=":push"-->
             <intent-filter>
                 <action android:name="cn.grasscloud.jiaxiao.intent.action.START" />
             </intent-filter>
@@ -351,7 +347,7 @@
         <!-- Umeng的消息接收服务 -->
         <service
             android:name="com.umeng.message.UmengIntentService"
-            android:process=":push"/>
+            android:process=":push" />
         <!--android:process=":push"-->
 
 
@@ -435,13 +431,13 @@
             tools:replace="android:value" />
         <!-- android:value="@integer/google_play_services_version"-->
 
-    <!--极光-->
+        <!--极光-->
         <!-- Required SDK 核心功能-->
         <!-- 可配置android:process参数将PushService放在其他进程中 -->
         <service
             android:name="cn.jpush.android.service.PushService"
             android:enabled="true"
-            android:exported="false" >
+            android:exported="false">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTER" />
                 <action android:name="cn.jpush.android.intent.REPORT" />
@@ -456,19 +452,19 @@
             android:name="cn.jpush.android.service.DaemonService"
             android:enabled="true"
             android:exported="true">
-            <intent-filter >
+            <intent-filter>
                 <action android:name="cn.jpush.android.intent.DaemonService" />
-                <category android:name="cn.grasscloud.jiaxiao"/>
+                <category android:name="cn.grasscloud.jiaxiao" />
             </intent-filter>
         </service>
 
         <!-- Required SDK核心功能-->
         <receiver
             android:name="cn.jpush.android.service.PushReceiver"
-            android:enabled="true" >
+            android:enabled="true">
             <intent-filter android:priority="1000">
                 <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
-                <category android:name="cn.grasscloud.jiaxiao"/>
+                <category android:name="cn.grasscloud.jiaxiao" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.USER_PRESENT" />
@@ -478,6 +474,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.PACKAGE_ADDED" />
                 <action android:name="android.intent.action.PACKAGE_REMOVED" />
+
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
@@ -486,10 +483,11 @@
         <activity
             android:name="cn.jpush.android.ui.PushActivity"
             android:configChanges="orientation|keyboardHidden"
-            android:theme="@android:style/Theme.NoTitleBar"
-            android:exported="false" >
+            android:exported="false"
+            android:theme="@android:style/Theme.NoTitleBar">
             <intent-filter>
                 <action android:name="cn.jpush.android.ui.PushActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="cn.grasscloud.jiaxiao" />
             </intent-filter>
@@ -510,8 +508,7 @@
         <service
             android:name="cn.jpush.android.service.DownloadService"
             android:enabled="true"
-            android:exported="false" >
-        </service>
+            android:exported="false"></service>
 
         <!-- Required SDK核心功能-->
         <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
@@ -519,8 +516,8 @@
         <!-- User defined.  For test only  用户自定义的广播接收器 没有完成进入内部页-->
         <receiver
             android:name="cn.grass.gate.http.message.JPReceiver"
-            android:exported="false"
-            android:enabled="true">
+            android:enabled="true"
+            android:exported="false">
             <intent-filter>
                 <action android:name="cn.jpush.android.intent.REGISTRATION" />
                 <!--Required  用户注册SDK的intent-->
@@ -536,16 +533,39 @@
             </intent-filter>
         </receiver>
 
-<!-- Required. For publish channel feature -->
+        <!-- Required. For publish channel feature -->
         <!-- JPUSH_CHANNEL 是为了方便开发者统计APK分发渠道。-->
         <!-- 例如: -->
         <!-- 发到 Google Play 的APK可以设置为 google-play; -->
         <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
         <!-- 渠道统计报表位于控制台页面的 “统计”-“用户统计”-“渠道分布” 中-->
-        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+        <meta-data
+            android:name="JPUSH_CHANNEL"
+            android:value="developer-default" />
         <!-- Required. AppKey copied from Portal -->
-        <meta-data android:name="JPUSH_APPKEY" android:value="597a9866677baa4c5c001abb"/>
+        <meta-data
+            android:name="JPUSH_APPKEY"
+            android:value="597a9866677baa4c5c001abb" />
         <!--极光end-->
+
+
+        <service
+            android:name="cn.grass.gate.service.HelloteacherService"
+            android:process=":HelloteacherService" />
+
+        <receiver android:name="cn.grass.gate.receiver.BootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.AIRPLANE_MODE" />
+                <action android:name="android.intent.action.CLOSE_SYSTEM_DIALOGS" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="cn.grass.gate.receiver.Alarmreceiver">
+            <intent-filter>
+                <action android:name="arui.alarm.action" />
+            </intent-filter>
+        </receiver>
+
     </application>
 
 

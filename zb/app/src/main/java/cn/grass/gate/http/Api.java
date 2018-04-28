@@ -24,5 +24,8 @@ public class Api {
     public static String URL_GET_HOME_LIST = HOST2 + "http://api.zb.com/data/v1/markets";//home列表
     public static String URL_GET_HANGQING = HOST2 + "http://api.zb.com/data/v1/ticker?";//行情
     public static String URL_GET_GATEIO_CNY = HOST2 + "http://18.216.158.43:8080/blog/zuiXing";//最新
+    public static String URL_GET_GATEIO_USDTCNY = HOST2 + "http://data.gateio.io/api2/1/ticker/usdt_cny";//usdt_cny
+
+
 
 }

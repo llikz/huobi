@@ -95,4 +95,27 @@ public class HomePresenter {
                 },TOKEN_GET_GATEIO_CNY);
     }
 
+    public int TOKEN_GET_GATEIO_USDTCNY=0x04;
+    public void getUSDTCNY(){
+        HashMap<String,String> map=new HashMap<>();
+        HttpManager.getInstance().getRequestForGson(GrassApp.getInstance(), Api.URL_GET_GATEIO_CNY,
+                map, new RequestCallBack() {
+                    @Override
+                    public void onSuccess(int callId, String content, String msg) {
+                        Price bean = GsonImpl.get().toObject(content,Price.class);
+                        if(view!=null){
+                            view.price(bean);
+                            return;
+                        }
+                    }
+
+                    @Override
+                    public void onFail(int callId, int errorId, String msg) {
+                        if(view!=null){
+                            view.onFail(callId,msg,errorId);
+                        }
+                    }
+                },TOKEN_GET_GATEIO_USDTCNY);
+    }
+
 }

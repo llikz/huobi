@@ -26,6 +26,7 @@ import cn.grass.gate.base.BaseFragment;
 import cn.grass.gate.fragments.PersonalFragment;
 import cn.grass.gate.fragments.HomeFragment;
 import cn.grass.gate.http.message.AccountEvent;
+import cn.grass.gate.service.HelloteacherService;
 import cn.grass.gate.utils.OptionDialogHelper;
 
 /**
@@ -40,9 +41,14 @@ public class MainActivity extends BaseActivity implements OnClickListener{
         EventBus.getDefault().register(this);
         initView();
         initPush();
-
+        inProcess();
 //        initChat();
     }
+    //进程函数
+     private void inProcess(){
+        Intent intent =new Intent(MainActivity.this, HelloteacherService.class);
+         startService(intent);
+     }
 
 
     TextView homeTv,personalTv;
