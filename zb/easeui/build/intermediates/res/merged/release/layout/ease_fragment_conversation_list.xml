@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hyphenate="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <include layout="@layout/ease_search_bar" />
+
+    <com.hyphenate.easeui.widget.EaseTitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        hyphenate:titleBarTitle="@string/session" />
+
+    <RelativeLayout
+        android:id="@+id/new_friend_rl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="7dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/new_friend_igv"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="3dp"
+            android:src="@drawable/icon_ease_new_friend_msg" />
+
+        <TextView
+            android:id="@+id/tv_add_friend_msg"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ease_shape_round_small_red"
+            android:gravity="center"
+            android:minWidth="16dp"
+            android:text="99+"
+            android:textColor="@color/btn_white_normal"
+            android:textSize="8sp" />
+
+        <TextView
+            android:id="@+id/tv_add_friend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="2dp"
+            android:layout_toRightOf="@+id/new_friend_igv"
+            android:padding="8dp"
+            android:text="新朋友"
+            android:textColor="@color/color_666"
+            android:textSize="@dimen/title" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/color_eee"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
+
+    <FrameLayout
+        android:id="@+id/fl_error_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></FrameLayout>
+
+
+    <com.hyphenate.easeui.widget.EaseConversationList
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:cacheColorHint="#fff"
+        android:divider="@color/color_eee"
+        android:dividerHeight="0.5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:scrollbars="none"
+        hyphenate:cvsListPrimaryTextSize="16sp" />
+
+</LinearLayout>

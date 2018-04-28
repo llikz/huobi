@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_white"
+    android:layout_marginBottom="@dimen/line">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="法律法规"
+        android:textSize="@dimen/title"
+        android:layout_marginBottom="@dimen/line_interval"
+        android:layout_marginTop="@dimen/layout_max_padding"
+        android:layout_marginLeft="@dimen/layout_max_padding"
+        android:textColor="@color/color_666"/>
+
+    <TextView
+        android:id="@+id/tv_collect_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1收藏内容"
+        android:textSize="@dimen/content"
+        android:layout_marginLeft="@dimen/layout_max_padding"
+        android:layout_marginBottom="@dimen/layout_max_padding"
+        android:textColor="@color/color_999"
+        android:layout_below="@+id/tv_title"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/icon_arrow_right"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/layout_max_padding"
+        android:layout_centerVertical="true"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_below="@+id/tv_collect_num"
+        android:layout_height="@dimen/line"
+        android:background="@color/color_line"/>
+</RelativeLayout>

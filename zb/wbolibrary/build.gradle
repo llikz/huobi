@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    //解决手机找不到核心库崩溃的情况
+    //noinspection all
+    task copyNativeLibs(type: Copy) {
+        // third party lib so
+        from(new File(projectDir, 'libs')) { include 'armeabi.so','armeabi-v7a.so' }
+        into new File(buildDir, 'native-libs')
+    }
+    tasks.withType(JavaCompile) {
+        compileTask ->
+            //noinspection all
+            compileTask.dependsOn copyNativeLibs
+    }
+    //noinspection all
+    tasks.withType(com.android.build.gradle.tasks.PackageApplication) {
+        pkgTask ->
+            new HashSet().add(new File(buildDir, 'native-libs'))
+    }
+    //end
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.+'
+    compile files('libs/weiboSDKCore_3.1.4.jar')
+}

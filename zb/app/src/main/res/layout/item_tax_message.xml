@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_white"
+    android:paddingTop="@dimen/layout_padding">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_666"
+        android:text="标题"
+        android:paddingLeft="@dimen/layout_padding"
+        android:paddingRight="@dimen/layout_padding"
+        android:layout_marginBottom="@dimen/layout_padding"
+        android:textSize="@dimen/content"/>
+
+    <TextView
+        android:id="@+id/tv_publish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_999"
+        android:text="出版人"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:paddingLeft="@dimen/layout_padding"
+        android:layout_toLeftOf="@+id/tv_date"
+        android:layout_below="@+id/tv_title"
+        android:textSize="@dimen/content"
+        android:layout_marginBottom="@dimen/layout_padding"/>
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_999"
+        android:text="日期"
+        android:layout_alignParentRight="true"
+        android:paddingRight="@dimen/layout_padding"
+
+        android:layout_below="@+id/tv_title"
+        android:textSize="@dimen/content"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/line"
+        android:background="@color/color_line"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

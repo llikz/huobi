@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger version="3"><dataSet config="main"><source path="E:\work\trunk\meter\easeui\libs"><file name="BaiduLBS_Android.jar" path="E:\work\trunk\meter\easeui\libs\BaiduLBS_Android.jar"/><file name="hyphenatechat_3.1.5.jar" path="E:\work\trunk\meter\easeui\libs\hyphenatechat_3.1.5.jar"/><file name="org.apache.http.legacy.jar" path="E:\work\trunk\meter\easeui\libs\org.apache.http.legacy.jar"/></source></dataSet><dataSet config="release"><source path="E:\work\trunk\meter\easeui\build-types\release\jniLibs"/></dataSet></merger>

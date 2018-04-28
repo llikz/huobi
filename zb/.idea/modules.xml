@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MPChartLib/MPChartLib.iml" filepath="$PROJECT_DIR$/MPChartLib/MPChartLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PushSDK/PushSDK.iml" filepath="$PROJECT_DIR$/PushSDK/PushSDK.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/litepal/litepal.iml" filepath="$PROJECT_DIR$/litepal/litepal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wbolibrary/wbolibrary.iml" filepath="$PROJECT_DIR$/wbolibrary/wbolibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weedlibrary/weedlibrary.iml" filepath="$PROJECT_DIR$/weedlibrary/weedlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zb.iml" filepath="$PROJECT_DIR$/zb.iml" />
+    </modules>
+  </component>
+</project>

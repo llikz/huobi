@@ -1,0 +1,3 @@
+include ':app', ':weedlibrary', ':wbolibrary', ":PushSDK", ":litepal", ":MPChartLib"/*, ':easeuiSd ,':VitamioLib'*/
+//project(':easeuiSd').projectDir = new File('easeui')
+//project(':VitamioLib').projectDir = new File('InitActivity')

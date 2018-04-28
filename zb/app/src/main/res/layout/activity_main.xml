@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/tablayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_home"
+                    style="@style/index_bottom_btn_nav"
+                    android:drawableTop="@drawable/selector_nav_talk_tax"
+                    android:text="首页" />
+
+                <TextView
+                    android:id="@+id/tv_unread_lawyer"
+                    style="@style/style_tab_bottom_msg_textview"
+                    android:text="0" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/tv_personal"
+                    style="@style/index_bottom_btn_nav"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:drawableTop="@drawable/selector_nav_personal"
+                    android:text="个人" />
+
+                <TextView
+                    android:id="@+id/tv_unread_personal"
+                    style="@style/style_tab_bottom_msg_textview"
+                    android:text="0" />
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_above="@id/tablayout"
+            android:background="@color/color_d2ccc5" />
+
+        <FrameLayout
+            android:id="@+id/index_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/view_line"
+            android:background="@color/color_white"></FrameLayout>
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

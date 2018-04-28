@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/color_bg"
+    android:orientation="vertical">
+
+
+    <cn.grass.gate.widgets.TopView
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_header_height"
+        android:background="@color/colorPrimary"
+        app:left_drawable="@mipmap/imageselector_back"
+        app:left_show="both"
+        app:left_text="返回"
+        app:right_show="none"
+        app:title_text="内部控制"
+        app:title_text_color="@color/color_white" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.baoyz.widget.PullRefreshLayout
+            android:id="@+id/pull_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <cn.grass.gate.widgets.CustomRecyclerView
+                android:id="@+id/list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </cn.grass.gate.widgets.CustomRecyclerView>
+        </com.baoyz.widget.PullRefreshLayout>
+
+        <include layout="@layout/layout_error" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

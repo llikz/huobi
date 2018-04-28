@@ -1,0 +1,126 @@
+[
+    {
+        "outputFile": "E:\\work\\trunk\\meter\\easeui\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "E:\\work\\trunk\\meter\\easeui\\res\\values-w820dp\\ease_dimens.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 305,
+                        "endColumn": 57,
+                        "endOffset": 358
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 113,
+                    "endColumn": 41,
+                    "endOffset": 150
+                },
+                "from": {
+                    "file": "E:\\work\\trunk\\meter\\easeui\\res\\values-w820dp\\ease_dimens.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 405,
+                        "endColumn": 41,
+                        "endOffset": 442
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 155,
+                    "endColumn": 41,
+                    "endOffset": 192
+                },
+                "from": {
+                    "file": "E:\\work\\trunk\\meter\\easeui\\res\\values-w820dp\\ease_dimens.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 363,
+                        "endColumn": 41,
+                        "endOffset": 400
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "E:\\work\\trunk\\plamTax\\easeui\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-w820dp-v13\\values-w820dp-v13.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 57,
+                    "endOffset": 108
+                },
+                "from": {
+                    "file": "E:\\work\\trunk\\plamTax\\easeui\\res\\values-w820dp\\ease_dimens.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 305,
+                        "endColumn": 57,
+                        "endOffset": 358
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 113,
+                    "endColumn": 41,
+                    "endOffset": 150
+                },
+                "from": {
+                    "file": "E:\\work\\trunk\\plamTax\\easeui\\res\\values-w820dp\\ease_dimens.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 405,
+                        "endColumn": 41,
+                        "endOffset": 442
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 155,
+                    "endColumn": 41,
+                    "endOffset": 192
+                },
+                "from": {
+                    "file": "E:\\work\\trunk\\plamTax\\easeui\\res\\values-w820dp\\ease_dimens.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 363,
+                        "endColumn": 41,
+                        "endOffset": 400
+                    }
+                }
+            }
+        ]
+    }
+]

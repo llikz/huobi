@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_bg"
+    android:orientation="vertical">
+
+    <cn.grass.gate.widgets.TopView
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_header_height"
+        android:background="@color/colorPrimary"
+        app:left_show="none"
+        app:right_show="none"
+        app:title_text="律师咨询"
+        app:title_text_color="@color/color_white" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white"
+        android:padding="@dimen/layout_padding">
+
+        <ImageView
+            android:id="@+id/igv_consult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/layout_padding"
+            android:src="@mipmap/icon_default_image" />
+
+        <TextView
+            android:id="@+id/tv_consult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/igv_consult"
+            android:text="在线咨询"
+            android:textColor="@color/color_333"
+            android:textSize="@dimen/content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_consult"
+            android:layout_toRightOf="@+id/igv_consult"
+            android:text="在线"
+            android:textColor="@color/color_999"
+            android:textSize="@dimen/content" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/layout_padding"
+            android:src="@mipmap/icon_arrow_right" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/line_interval"
+        android:background="@color/color_white"
+        android:padding="@dimen/layout_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="自助咨询"
+            android:textColor="@color/color_666"
+            android:textSize="@dimen/content" />
+
+        <EditText
+            android:id="@+id/et_self_help_consult"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/layout_padding"
+            android:layout_marginRight="@dimen/layout_padding"
+            android:background="@drawable/shape_search_bg"
+            android:drawableLeft="@mipmap/icon_search_gray"
+            android:drawablePadding="@dimen/drawable_padding"
+            android:enabled="false"
+            android:paddingBottom="@dimen/dp_5"
+            android:paddingLeft="@dimen/dp_15"
+            android:paddingTop="@dimen/dp_5"
+            android:text="搜索文章"
+            android:textColor="@color/color_666"
+            android:textSize="@dimen/content" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/et_self_help_consult">
+
+        <com.baoyz.widget.PullRefreshLayout
+            android:id="@+id/pull_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <cn.grass.gate.widgets.CustomRecyclerView
+                android:id="@+id/list_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </cn.grass.gate.widgets.CustomRecyclerView>
+        </com.baoyz.widget.PullRefreshLayout>
+
+        <include layout="@layout/layout_error" />
+
+    </RelativeLayout>
+</LinearLayout>

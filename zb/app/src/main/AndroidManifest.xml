@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="cn.grass.gate">
+
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!--at android.provider.Settings.checkAndNoteWriteSettingsOperation(Settings.java:9387)-->
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!--允许程序打开网络套接字-->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!--允许程序设置内置sd卡的写权限-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--允许程序获取网络状态-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!--允许程序访问WiFi网络信息-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--允许程序读写手机状态和身份-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--用于进行网络定位-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+    <!--用于访问GPS定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <!--用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
+    <!--用于读取手机当前的状态-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
+    <!--极光-->
+    <!-- Required -->
+    <permission
+        android:name="cn.grass.gate.permission.JPUSH_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="android.permission.RECEIVE_USER_PRESENT" />
+    <!-- Required -->
+    <uses-permission android:name="cn.grasscloud.jiaxiao.permission.JPUSH_MESSAGE" />
+    <!-- 极光end -->
+
+    <application
+        android:name="cn.grass.gate.GrassApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/head"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/weedStyle">
+        <!--配置高德地图的key-->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="0e69bb0808a57572b6f6ee45a09a20a6" />
+
+        <activity android:name="cn.grass.gate.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--首页-->
+        <!--<activity-->
+            <!--android:name="cn.grass.meter.MainActivity"-->
+            <!--android:launchMode="singleTask"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:windowSoftInputMode="adjustPan" />-->
+
+        <!--登录-->
+        <activity
+            android:name="cn.grass.gate.activitys.LoginActivity"
+            android:theme="@style/AppThemeWhite"
+            android:screenOrientation="portrait" />
+        <!--引导页-->
+        <activity
+            android:name="cn.grass.gate.activitys.FirstPageActivity"
+            android:screenOrientation="portrait" />
+        <!--个人设置-->
+        <activity
+            android:name="cn.grass.gate.activitys.UserSettingActivity"
+            android:screenOrientation="portrait" />
+        <!--代办任务-->
+        <activity
+            android:name="cn.grass.gate.activitys.WaitTaskActivity"
+            android:screenOrientation="portrait" />
+        <!--代办任务查询-->
+        <activity
+            android:name="cn.grass.gate.activitys.SearchWaitTaskActivity"
+            android:screenOrientation="portrait" />
+        <!--台区列表-->
+        <activity
+            android:name="cn.grass.gate.activitys.TaiquListActivity"
+            android:screenOrientation="portrait" />
+        <!--台区列表查询-->
+        <activity
+            android:name="cn.grass.gate.activitys.SearchTaiquActivity"
+            android:screenOrientation="portrait" />
+        <!--用户详情-->
+        <activity
+            android:name="cn.grass.gate.activitys.YongHuDetailActivity"
+            android:screenOrientation="portrait" />
+
+
+        <!--忘记密码-->
+        <activity
+            android:name="cn.grass.gate.activitys.CheckAuthActivity"
+            android:screenOrientation="portrait" />
+        <!--用户反馈-->
+        <activity
+            android:name="cn.grass.gate.activitys.FeedBackActivity"
+            android:screenOrientation="portrait" />
+        <!--测试-->
+        <activity
+            android:name="cn.grass.gate.activitys.TestActivity"
+            android:screenOrientation="portrait"
+           />
+        <!--扫描-->
+        <!--旧表箱-->
+        <activity
+            android:name="cn.grass.gate.activitys.work.OldMeterBoxActivity"
+            android:screenOrientation="portrait" />
+        <!--旧表-->
+        <activity
+            android:name="cn.grass.gate.activitys.work.OldMeterActivity"
+            android:screenOrientation="portrait" />
+        <!--拍照-->
+        <activity
+            android:name="cn.grass.gate.activitys.work.TakePicActivity"
+            android:screenOrientation="portrait" />
+        <!--新表-->
+        <activity
+            android:name="cn.grass.gate.activitys.work.NewMeterActivity"
+            android:screenOrientation="portrait" />
+        <!--新表箱-->
+        <activity
+            android:name="cn.grass.gate.activitys.work.NewMeterBoxActivity"
+            android:screenOrientation="portrait" />
+        <!--完成返回-->
+        <activity
+            android:name="cn.grass.gate.activitys.work.DoneActivity"
+            android:screenOrientation="portrait" />
+        <!--查看图片-->
+        <activity
+            android:name="cn.grass.gate.activitys.ShowPicActivity"
+            android:screenOrientation="portrait" />
+        <!--拍照识别图片-->
+        <!--高德地图-->
+        <!--导航-->
+        <!--实时导航-->
+        <!--考核统计-->
+        <activity
+            android:name="cn.grass.gate.activitys.AssessActivity"
+            android:screenOrientation="portrait" />
+
+
+
+
+
+
+        <!--台区详情-->
+        <!--工作规范-->
+        <activity
+            android:name="cn.grass.gate.activitys.JobSpecificationActivity"
+            android:screenOrientation="portrait" />
+        <!--内部控制-->
+        <activity
+            android:name="cn.grass.gate.activitys.InternalControlsActivity"
+            android:screenOrientation="portrait" />
+        <!--岗位风险-->
+        <activity
+            android:name="cn.grass.gate.activitys.PostRiskActivity"
+            android:screenOrientation="portrait" />
+        <!--内容收藏-->
+        <activity
+            android:name="cn.grass.gate.activitys.CollectionListActivity"
+            android:screenOrientation="portrait" />
+        <!--文章详情-->
+        <activity
+            android:name="cn.grass.gate.activitys.ArticleDetailActivity"
+            android:screenOrientation="portrait" />
+        <!--搜索文章-->
+        <activity
+            android:name="cn.grass.gate.activitys.SearchArticleActivity"
+            android:theme="@style/AppThemeGray"
+            android:screenOrientation="portrait" />
+        <!--高德-->
+
+        <!-- 监听通知点击或者忽略处理的广播 -->
+        <service
+            android:name="cn.grass.gate.http.message.PushCenter"
+            android:process=":push" />
+        <service android:name="cn.grass.gate.http.message.NotificationService" />
+
+        <receiver
+            android:name="com.umeng.message.NotificationProxyBroadcastReceiver"
+            android:exported="false"></receiver>
+
+        <!-- 监听开机运行、网络连接变化、卸载的广播 -->
+        <receiver
+            android:name="com.umeng.message.SystemReceiver"
+            android:process=":push">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+
+        <!-- QQ登陆-->
+        <activity
+            android:name="com.tencent.connect.common.AssistActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="behind"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"></activity>
+        <activity
+            android:name="com.tencent.tauth.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="1105780830" />
+            </intent-filter>
+        </activity>
+
+        <!-- 微博登陆-->
+        <activity
+            android:name="com.sina.weibo.sdk.component.WeiboSdkBrowser"
+            android:configChanges="keyboardHidden|orientation"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"></activity>
+
+        <!--微信登录-->
+        <activity
+            android:name="cn.grass.gate.wxapi.WXEntryActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="grassclound.cn" />
+            </intent-filter>
+        </activity>
+        <!-- 监听消息到达的广播 -->
+        <receiver
+            android:name="com.umeng.message.MessageReceiver"
+            android:exported="false"
+            android:process=":push">
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.RECEIVE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 监听宿主选举的广播 -->
+        <receiver
+            android:name="com.umeng.message.ElectionReceiver"
+            android:exported="true"
+            android:process=":push">
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.ELECTION_RESULT_V4" />
+                <category android:name="umeng" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 监听注册的广播 -->
+        <!-- 【应用包名】字符串需要替换成本应用的应用包名 -->
+        <receiver
+            android:name="com.umeng.message.RegistrationReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.grasscloud.jiaxiao.intent.action.COMMAND" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="com.umeng.message.UmengMessageBootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+        <!--友盟分享-->
+        <activity
+            android:name="cn.grass.gate.share.WBUMShareActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="cn.grass.gate.share.WXUMShareActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+        <activity
+            android:name="com.umeng.qq.tencent.AuthActivity"
+            android:launchMode="singleTask"
+            android:noHistory="true" >
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="tencent100424468" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.umeng.qq.tencent.AssistActivity"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
+        <!--友盟分享end-->
+        <!-- Umeng的长连服务，用来建立推送的长连接的 -->
+        <!-- 【应用包名】字符串需要替换成本应用的应用包名 -->
+        <service
+            android:name="com.umeng.message.UmengService"
+            android:exported="true"
+            android:label="PushService"
+            android:process=":push">
+           <!-- android:process=":push"-->
+            <intent-filter>
+                <action android:name="cn.grasscloud.jiaxiao.intent.action.START" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="cn.grasscloud.jiaxiao.intent.action.COCKROACH" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.PING_V4" />
+                <category android:name="umeng" />
+            </intent-filter>
+        </service>
+
+        <!-- Umeng的消息接收服务 -->
+        <service
+            android:name="com.umeng.message.UmengIntentService"
+            android:process=":push"/>
+        <!--android:process=":push"-->
+
+
+        <!-- Umeng的消息路由服务 -->
+        <service
+            android:name="com.umeng.message.UmengMessageIntentReceiverService"
+            android:exported="true"
+            android:process=":push">
+            <!--android:process=":push"-->
+            <intent-filter>
+                <action android:name="org.android.agoo.client.MessageReceiverService" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.android.agoo.client.ElectionReceiverService" />
+            </intent-filter>
+        </service>
+
+        <!-- v2.4.1添加的Service，Umeng的消息接收后的处理服务 -->
+        <service
+            android:name="com.umeng.message.UmengMessageCallbackHandlerService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.umeng.messge.registercallback.action" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.umeng.message.unregistercallback.action" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.umeng.message.message.handler.action" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.umeng.message.autoupdate.handler.action" />
+            </intent-filter>
+        </service>
+
+        <!-- V1.3.0添加的service，负责下载通知的资源 -->
+        <service android:name="com.umeng.message.UmengDownloadResourceService" />
+
+        <!-- V2.5.0添加的Service，用于本地通知 -->
+        <!-- 如果不使用本地通知，可以注释掉本地通知服务的配置 -->
+        <service
+            android:name="com.umeng.message.local.UmengLocalNotificationService"
+            android:exported="false" />
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="57b2cc0e67e58e601d000fc9"></meta-data>
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="f2faeacff4dc45f1b4a005c13948c7c5"></meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="100"></meta-data>
+
+        <!--环信-->
+
+        <!-- 设置环信应用的AppKey -->
+        <meta-data
+            android:name="EASEMOB_APPKEY"
+            android:value="hzxckj#grasscloud" />
+        <!-- 声明SDK所需的service SDK核心功能-->
+        <!--<service
+            android:name="com.hyphenate.chat.EMChatService"
+            android:exported="true" />
+        &lt;!&ndash; 声明SDK所需的receiver &ndash;&gt;
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            &lt;!&ndash; 可选filter &ndash;&gt;
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>--><!-- ATTENTION: This was auto-generated to add Google Play services to your project for
+     App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="1111"
+            tools:replace="android:value" />
+        <!-- android:value="@integer/google_play_services_version"-->
+
+    <!--极光-->
+        <!-- Required SDK 核心功能-->
+        <!-- 可配置android:process参数将PushService放在其他进程中 -->
+        <service
+            android:name="cn.jpush.android.service.PushService"
+            android:enabled="true"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER" />
+                <action android:name="cn.jpush.android.intent.REPORT" />
+                <action android:name="cn.jpush.android.intent.PushService" />
+                <action android:name="cn.jpush.android.intent.PUSH_TIME" />
+            </intent-filter>
+        </service>
+
+        <!-- since 1.8.0 option 可选项。用于同一设备中不同应用的JPush服务相互拉起的功能。 -->
+        <!-- 若不启用该功能可删除该组件，将不拉起其他应用也不能被其他应用拉起 -->
+        <service
+            android:name="cn.jpush.android.service.DaemonService"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter >
+                <action android:name="cn.jpush.android.intent.DaemonService" />
+                <category android:name="cn.grasscloud.jiaxiao"/>
+            </intent-filter>
+        </service>
+
+        <!-- Required SDK核心功能-->
+        <receiver
+            android:name="cn.jpush.android.service.PushReceiver"
+            android:enabled="true" >
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY" />
+                <category android:name="cn.grasscloud.jiaxiao"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.USER_PRESENT" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <!-- Optional -->
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Required SDK核心功能-->
+        <activity
+            android:name="cn.jpush.android.ui.PushActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="cn.grasscloud.jiaxiao" />
+            </intent-filter>
+        </activity>
+        <!-- SDK核心功能-->
+        <activity
+            android:name="cn.jpush.android.ui.PopWinActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:exported="false"
+            android:theme="@style/MyDialogStyle">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="cn.grasscloud.jiaxiao" />
+            </intent-filter>
+        </activity>
+
+        <!-- Required SDK核心功能-->
+        <service
+            android:name="cn.jpush.android.service.DownloadService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+
+        <!-- Required SDK核心功能-->
+        <receiver android:name="cn.jpush.android.service.AlarmReceiver" />
+
+        <!-- User defined.  For test only  用户自定义的广播接收器 没有完成进入内部页-->
+        <receiver
+            android:name="cn.grass.gate.http.message.JPReceiver"
+            android:exported="false"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION" />
+                <!--Required  用户注册SDK的intent-->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED" />
+                <!--Required  用户接收SDK消息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED" />
+                <!--Required  用户接收SDK通知栏信息的intent-->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED" />
+                <!--Required  用户打开自定义通知栏的intent-->
+                <action android:name="cn.jpush.android.intent.CONNECTION" />
+                <!--接收网络变化 连接/断开 since 1.6.3-->
+                <category android:name="cn.grasscloud.jiaxiao" />
+            </intent-filter>
+        </receiver>
+
+<!-- Required. For publish channel feature -->
+        <!-- JPUSH_CHANNEL 是为了方便开发者统计APK分发渠道。-->
+        <!-- 例如: -->
+        <!-- 发到 Google Play 的APK可以设置为 google-play; -->
+        <!-- 发到其他市场的 APK 可以设置为 xxx-market。 -->
+        <!-- 渠道统计报表位于控制台页面的 “统计”-“用户统计”-“渠道分布” 中-->
+        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+        <!-- Required. AppKey copied from Portal -->
+        <meta-data android:name="JPUSH_APPKEY" android:value="597a9866677baa4c5c001abb"/>
+        <!--极光end-->
+    </application>
+
+
+</manifest>
