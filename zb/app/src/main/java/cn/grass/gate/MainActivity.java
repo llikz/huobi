@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
@@ -26,6 +27,7 @@ import cn.grass.gate.base.BaseFragment;
 import cn.grass.gate.fragments.PersonalFragment;
 import cn.grass.gate.fragments.HomeFragment;
 import cn.grass.gate.http.message.AccountEvent;
+import cn.grass.gate.http.message.DataEvent;
 import cn.grass.gate.service.HelloteacherService;
 import cn.grass.gate.utils.OptionDialogHelper;
 
@@ -252,4 +254,27 @@ public class MainActivity extends BaseActivity implements OnClickListener{
     protected void onPause() {
         super.onPause();
     }
+
+
+//    @Subscribe(threadMode = ThreadMode.MAIN)
+//    public void DataEventBus(DataEvent type) {
+//        if (type != null) {
+//            switch (type.mType) {
+//                case DataEvent.TYPE_SHUAXIN_HANGQING:
+////                   ToastUtil.shortShow("轮到我干活了");
+//                    Log.i("###", "###-->>DataEventBus-->>doFindData");
+////                    try {
+////                        Thread.sleep(60000);
+//
+////                        homePresenter.getTicker(selectMarket);
+////                        homePresenter.getGateRate();
+////                    doFindData();
+////                    } catch (InterruptedException e) {
+////                        e.printStackTrace();
+////                    }
+//                    break;
+//
+//            }
+//        }
+//    }
 }

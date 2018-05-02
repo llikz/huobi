@@ -23,4 +23,5 @@ public class DataEvent {
 
 
     public final static int TYPE_SHUAXIN_HANGQING=0X100;//刷新行情
+    public final static int TYPE_SHUAXIN_HANGQING2=0X101;//刷新行情2
 }

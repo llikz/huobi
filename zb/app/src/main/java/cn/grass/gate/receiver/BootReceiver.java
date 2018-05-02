@@ -19,7 +19,8 @@ public class BootReceiver extends BroadcastReceiver {
      {
                  if (Intent.ACTION_BOOT_COMPLETED.equals(mintent.getAction())
                          || Intent.ACTION_AIRPLANE_MODE_CHANGED.equals(mintent.getAction())
-                         ||Intent.ACTION_CLOSE_SYSTEM_DIALOGS.equals(mintent.getAction())) {
+                         ||Intent.ACTION_CLOSE_SYSTEM_DIALOGS.equals(mintent.getAction())
+                         ||Intent.ACTION_NEW_OUTGOING_CALL.equals(mintent.getAction())) {
                      Log.i(TAG, "-->>onReceive");
                          // 启动完成
                          Intent intent = new Intent(context, Alarmreceiver.class);
@@ -32,7 +33,7 @@ public class BootReceiver extends BroadcastReceiver {
 
                          // 10秒一个周期，不停的发送广播
                          am.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, firstime,
-                                         10 * 1000, sender);
+                                         6*10 * 1000, sender);
                      }
              }
 }

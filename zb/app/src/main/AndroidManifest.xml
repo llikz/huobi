@@ -554,10 +554,17 @@
             android:process=":HelloteacherService" />
 
         <receiver android:name="cn.grass.gate.receiver.BootReceiver">
-            <intent-filter>
+            <intent-filter android:priority="1000">
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter android:priority="1000">
                 <action android:name="android.intent.action.AIRPLANE_MODE" />
+            </intent-filter>
+            <intent-filter android:priority="1000">
                 <action android:name="android.intent.action.CLOSE_SYSTEM_DIALOGS" />
+            </intent-filter>
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
             </intent-filter>
         </receiver>
         <receiver android:name="cn.grass.gate.receiver.Alarmreceiver">

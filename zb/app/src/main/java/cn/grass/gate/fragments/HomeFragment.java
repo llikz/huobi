@@ -88,6 +88,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View vs = inflater.inflate(R.layout.fragment_home, container, false);
+        EventBus.getDefault().register(this);
         initView(vs);
         return vs;
     }
@@ -110,7 +111,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
     private void initView(View v) {
         vibrator = (Vibrator)getActivity().getSystemService(Context.VIBRATOR_SERVICE);
-        EventBus.getDefault().register(this);
+
         String str = "ltc_btc,eth_btc,etc_btc,bts_btc,bcc_btc,qtum_btc,eos_btc,hsr_btc,xrp_btc,btc_usdt,ltc_usdt,eth_usdt,etc_usdt,bts_usdt,bcc_usdt,qtum_usdt,eos_usdt,hsr_usdt,xrp_usdtbtc_qc,ltc_qc,eth_qc,etc_qc,bts_qc,bcc_qc,qtum_qc,eos_qc,hsr_qc,xrp_qc";
         String[] str2 = {"ltc_btc","eth_btc","etc_btc"};
 
@@ -438,7 +439,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
         }
         hiddenDialog();
-        EventBus.getDefault().post(new DataEvent(DataEvent.TYPE_SHUAXIN_HANGQING));
+//        EventBus.getDefault().post(new DataEvent(DataEvent.TYPE_SHUAXIN_HANGQING));
     }
 
     @Override
@@ -465,7 +466,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
         }
         hiddenDialog();
-        EventBus.getDefault().post(new DataEvent(DataEvent.TYPE_SHUAXIN_HANGQING));
+//        EventBus.getDefault().post(new DataEvent(DataEvent.TYPE_SHUAXIN_HANGQING));
     }
 
     @Override
@@ -492,7 +493,11 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
         }
         hiddenDialog();
-        EventBus.getDefault().post(new DataEvent(DataEvent.TYPE_SHUAXIN_HANGQING));
+        com.weedys.weedlibrary.utils.LogUtil.show("#### huoBiData  -->");
+        Message msg = Message.obtain();
+        msg.what = 1;
+        myHandler.sendMessageDelayed(msg,10000);
+
     }
 
     @Override
@@ -511,17 +516,31 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             switch (type.mType) {
                 case DataEvent.TYPE_SHUAXIN_HANGQING:
 //                   ToastUtil.shortShow("轮到我干活了");
-                    Log.i("###", "-->>DataEventBus-->>doFindData");
-                    try {
-                        Thread.sleep(60000);
+                    Log.i("###", "###-->>DataEventBus1-->>doFindData");
+//                    try {
+//                        Thread.sleep(60000);
 
 //                        homePresenter.getTicker(selectMarket);
 //                        homePresenter.getGateRate();
                         doFindData();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
                     break;
+                case DataEvent.TYPE_SHUAXIN_HANGQING2:
+//                   ToastUtil.shortShow("轮到我干活了");
+                    Log.i("###", "###2-->>DataEventBus2-->>doFindData2");
+//                    try {
+//                        Thread.sleep(60000);
+
+//                        homePresenter.getTicker(selectMarket);
+//                        homePresenter.getGateRate();
+                    doFindData();
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+                    break;
+
             }
         }
     }
@@ -533,33 +552,33 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             switch (msg.what) {
                 case 1:
                     //更新到界面
-                    if(null != firstData){
-                        lastNum = firstData.getLast();
-//                        last.setText("最新:"+firstData.getLast());
-//                        high.setText("最高:"+firstData.getHighestBid());
-//                        low.setText("最低: "+firstData.getLowestAsk());
-                        last.setText("新买:"+firstData.getHighestBid());
-                        high.setText("新卖:"+firstData.getLowestAsk());
-                        low.setText("近低: "+firstData.getLow24hr()+"近高: "+firstData.getHigh24hr());
-                        //振动
-                        boolean flag1 = Double.parseDouble(lastNum) - Double.parseDouble(setHighNum)> 0;
-                        boolean flag2 = Double.parseDouble(lastNum) - Double.parseDouble(setLowNum) < 0;
-                        if((flag1 || flag2) && !cancelFlag){
-                            /*
-                             * 想设置震动大小可以通过改变pattern来设定，如果开启时间太短，震动效果可能感觉不到
-                             * */
-
-                            long [] pattern = {100,400,100,400};   // 停止 开启 停止 开启
-                            vibrator.vibrate(pattern,2);           //重复两次上面的pattern 如果只想震动一次，index设为-1
-                        }else {
-                            vibrator.cancel();
-                        }
-
-
-                    }
-                    hiddenDialog();
+//                    if(null != firstData){
+//                        lastNum = firstData.getLast();
+////                        last.setText("最新:"+firstData.getLast());
+////                        high.setText("最高:"+firstData.getHighestBid());
+////                        low.setText("最低: "+firstData.getLowestAsk());
+//                        last.setText("新买:"+firstData.getHighestBid());
+//                        high.setText("新卖:"+firstData.getLowestAsk());
+//                        low.setText("近低: "+firstData.getLow24hr()+"近高: "+firstData.getHigh24hr());
+//                        //振动
+//                        boolean flag1 = Double.parseDouble(lastNum) - Double.parseDouble(setHighNum)> 0;
+//                        boolean flag2 = Double.parseDouble(lastNum) - Double.parseDouble(setLowNum) < 0;
+//                        if((flag1 || flag2) && !cancelFlag){
+//                            /*
+//                             * 想设置震动大小可以通过改变pattern来设定，如果开启时间太短，震动效果可能感觉不到
+//                             * */
+//
+//                            long [] pattern = {100,400,100,400};   // 停止 开启 停止 开启
+//                            vibrator.vibrate(pattern,2);           //重复两次上面的pattern 如果只想震动一次，index设为-1
+//                        }else {
+//                            vibrator.cancel();
+//                        }
+//
+//
+//                    }
+//                    hiddenDialog();
+//                    EventBus.getDefault().post(new DataEvent(DataEvent.TYPE_SHUAXIN_HANGQING));
                     EventBus.getDefault().post(new DataEvent(DataEvent.TYPE_SHUAXIN_HANGQING));
-
                     break;
             }
             super.handleMessage(msg);

@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Message;
 import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -17,6 +18,8 @@ import android.util.Log;
 import com.weedys.weedlibrary.http.RequestCallBack;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.litepal.tablemanager.Connector;
 
 import java.util.Date;
@@ -39,11 +42,12 @@ public class HelloteacherService extends Service {
     public void onCreate() {
          super.onCreate();
         Log.i(TAG, "-->>onCreate");
+         EventBus.getDefault().register(this);
     }
 
              @Override
      public int onStartCommand(Intent intent, int flags, int startId) {
-                 Log.i(TAG, "-->>onStartCommand-->>"+startId);
+                 Log.i(TAG, "###-->>onStartCommand-->>"+startId);
                  flags = START_STICKY;
                  //获取数据
 
@@ -53,8 +57,12 @@ public class HelloteacherService extends Service {
 //                         getData();
 //                     }
 //                 }, 1000);
-                    //发消息更新
-                 EventBus.getDefault().post(new DataEvent(DataEvent.TYPE_SHUAXIN_HANGQING));
+//                 Message msg = Message.obtain();
+//                 msg.what = 1;
+//                 myHandler.sendMessage(msg);
+
+                 new MyServerThread().start();
+
 
                   //启用前台服务，主要是startForeground()
 //                     Notification notification = new Notification(R.mipmap.icon_logo, "用电脑时间过长了！白痴！", System.currentTimeMillis());
@@ -136,6 +144,38 @@ public class HelloteacherService extends Service {
       public void onDestroy() {
       Log.i(TAG, "-->>onDestroy");
          super.onDestroy();
-
+          EventBus.getDefault().unregister(this);
      }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void DataEventBus(DataEvent type) {
+        if (type != null) {
+            switch (type.mType) {
+            }
+        }
+    }
+
+    Handler myHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    Log.i(TAG, "###-->>myHandler HelloteacherService-->>");
+                    //发消息更新
+                    EventBus.getDefault().post(new DataEvent(DataEvent.TYPE_SHUAXIN_HANGQING));
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+    };
+
+    class MyServerThread extends Thread{
+        @Override
+        public void run() {
+//            EventBus.getDefault().post(new DataEvent(DataEvent.TYPE_SHUAXIN_HANGQING2));
+            Log.i(TAG, "###-->>MyServerThread-->>");
+
+            Message msg = Message.obtain();
+            msg.what = 1;
+            myHandler.sendMessage(msg);
+        }
+    }
  }

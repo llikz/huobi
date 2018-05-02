@@ -21,7 +21,7 @@ android {
         abortOnError false
     }
     dexOptions {
-        incremental true
+//        incremental true
         javaMaxHeapSize "4g"
     }
 
@@ -45,6 +45,12 @@ android {
 //            keyAlias "hzxckj"
 //            keyPassword "hzxckj@2016"
 //        }
+        debug {
+            keyAlias 'gate'
+            keyPassword '123456'
+            storeFile file('../gate.jks')
+            storePassword '123456'
+        }
     }//签名
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
