@@ -16,8 +16,10 @@ import android.util.Log;
 
 import com.weedys.weedlibrary.http.RequestCallBack;
 
+import org.greenrobot.eventbus.EventBus;
 import org.litepal.tablemanager.Connector;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import cn.grass.gate.GrassApp;
@@ -25,6 +27,7 @@ import cn.grass.gate.R;
 import cn.grass.gate.beans.Price;
 import cn.grass.gate.http.Api;
 import cn.grass.gate.http.HttpManager;
+import cn.grass.gate.http.message.DataEvent;
 import cn.grass.gate.model.HuoBiData;
 import cn.grass.gate.receiver.Alarmreceiver;
 import cn.grass.gate.utils.GsonImpl;
@@ -42,13 +45,16 @@ public class HelloteacherService extends Service {
      public int onStartCommand(Intent intent, int flags, int startId) {
                  Log.i(TAG, "-->>onStartCommand-->>"+startId);
                  flags = START_STICKY;
+                 //获取数据
 
-                 new Handler().postDelayed(new Runnable() {
-                     public void run() {
-                         //获取数据
-                         getData();
-                     }
-                 }, 1000);
+//                 new Handler().postDelayed(new Runnable() {
+//                     public void run() {
+//                         //获取数据
+//                         getData();
+//                     }
+//                 }, 1000);
+                    //发消息更新
+                 EventBus.getDefault().post(new DataEvent(DataEvent.TYPE_SHUAXIN_HANGQING));
 
                   //启用前台服务，主要是startForeground()
 //                     Notification notification = new Notification(R.mipmap.icon_logo, "用电脑时间过长了！白痴！", System.currentTimeMillis());
@@ -97,9 +103,11 @@ public class HelloteacherService extends Service {
                     @Override
                     public void onSuccess(int callId, String content, String msg) {
                         HuoBiData bean = GsonImpl.get().toObject(content,HuoBiData.class);
+                        bean.setCreateDate(new Date());
                         //保存到数据库
                         Log.i(TAG, "-->>onSuccess-->>"+bean.toString());
-//                        bean.save();
+
+                        bean.save();
 
 //                        if(bean.save()){
 //                            Log.i(TAG, "-->>Success-->>save:"+bean.toString());

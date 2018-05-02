@@ -2,6 +2,8 @@ package cn.grass.gate.model;
 
 import org.litepal.crud.DataSupport;
 
+import java.util.Date;
+
 public class HuoBiData extends DataSupport {
 
 
@@ -26,6 +28,16 @@ public class HuoBiData extends DataSupport {
     private int quoteVolume;
     private String high24hr;
     private String low24hr;
+
+    private Date createDate;
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
 
     public String getResult() {
         return result;
@@ -111,6 +123,7 @@ public class HuoBiData extends DataSupport {
                 ", quoteVolume=" + quoteVolume +
                 ", high24hr='" + high24hr + '\'' +
                 ", low24hr='" + low24hr + '\'' +
+                ", createDate='" + createDate + '\'' +
                 '}';
     }
 }

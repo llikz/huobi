@@ -2,9 +2,12 @@ package cn.grass.gate.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.os.Vibrator;
 import android.support.annotation.Nullable;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,6 +26,8 @@ import com.bumptech.glide.Glide;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
+import org.litepal.crud.DataSupport;
+import org.litepal.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,6 +41,7 @@ import cn.grass.gate.beans.HangQing;
 import cn.grass.gate.beans.HomeBean;
 import cn.grass.gate.beans.Price;
 import cn.grass.gate.http.message.DataEvent;
+import cn.grass.gate.model.HuoBiData;
 import cn.grass.gate.presenters.HomePresenter;
 import cn.grass.gate.utils.ToastUtil;
 import cn.grass.gate.views.HomeView;
@@ -71,8 +77,8 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private EditText lowet;
     private TextView highertext;
     private TextView lowertext;
-    private String setLowNum;
-    private String setHighNum;
+    private String setLowNum="6";//默认数据
+    private String setHighNum ="7";//默认数据
     private String selectMarket;
     private Button cancelbt;
     private Button startbt;
@@ -331,10 +337,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
                 break;
             case R.id.startbt:
                 //开启监控
-//                homePresenter.getTicker(selectMarket);
-                homePresenter.getGateRate();
-                cancelFlag = false;
                 ToastUtil.shortShow(getString(R.string.zb_start_hint));
+//                homePresenter.getTicker(selectMarket);
+//                homePresenter.getGateRate();
+                doFindData();
+
+                cancelFlag = false;
+
                 break;
 
 //            case R.id.query_ll:
@@ -347,6 +356,31 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
 
 
         }
+    }
+    HuoBiData firstData;
+    private void doFindData() {
+        //去数据库查询
+//        firstData= DataSupport.findFirst(HuoBiData.class);
+        //去拿数据
+        homePresenter.getUSDTCNY();
+//        Message msg = Message.obtain();
+//        msg.what = 1;
+//        myHandler.sendMessage(msg);
+        //获取前10的数据
+//                http://data.gateio.io/api2/1/ticker/usdt_cny
+//                List<News> newsList = DataSupport.select("title", "content")
+//                        .where("commentcount > ?", "0")
+//                        .order("publishdate desc").limit(10).find(News.class);
+//        List<HuoBiData> newsList = DataSupport.select("lowestAsk","highestBid")
+//                .order("createDate desc").limit(20).find(HuoBiData.class);
+//
+//        for (int i = 0; i < newsList.size(); i++) {
+//            com.weedys.weedlibrary.utils.LogUtil.show("###"+newsList.get(i).toString());
+//        }
+
+
+
+
     }
 
     @Override
@@ -386,6 +420,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             last.setText("最新:"+hangQing.getTicker().getLast());
             high.setText("最高:"+hangQing.getTicker().getHigh());
             low.setText("最低: "+hangQing.getTicker().getLow());
+
             //振动
             boolean flag1 = Double.parseDouble(lastNum) - Double.parseDouble(setHighNum)> 0;
             boolean flag2 = Double.parseDouble(lastNum) - Double.parseDouble(setLowNum) < 0;
@@ -434,6 +469,33 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     }
 
     @Override
+    public void huoBiData(HuoBiData data) {
+        if(null != data){
+            lastNum = data.getLast()+"";
+            last.setText("新买:"+data.getHighestBid());
+            high.setText("新卖:"+data.getLowestAsk());
+            low.setText("近低: "+data.getLow24hr()+"近高: "+data.getHigh24hr());
+            //振动
+            boolean flag1 = Double.parseDouble(lastNum) - Double.parseDouble(setHighNum)> 0;
+            boolean flag2 = Double.parseDouble(lastNum) - Double.parseDouble(setLowNum) < 0;
+            if((flag1 || flag2) && !cancelFlag){
+                /*
+                 * 想设置震动大小可以通过改变pattern来设定，如果开启时间太短，震动效果可能感觉不到
+                 * */
+
+                long [] pattern = {100,400,100,400};   // 停止 开启 停止 开启
+                vibrator.vibrate(pattern,2);           //重复两次上面的pattern 如果只想震动一次，index设为-1
+            }else {
+                vibrator.cancel();
+            }
+
+
+        }
+        hiddenDialog();
+        EventBus.getDefault().post(new DataEvent(DataEvent.TYPE_SHUAXIN_HANGQING));
+    }
+
+    @Override
     public void onSuccess(int callId, String body, String msg) {
 
     }
@@ -449,11 +511,13 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             switch (type.mType) {
                 case DataEvent.TYPE_SHUAXIN_HANGQING:
 //                   ToastUtil.shortShow("轮到我干活了");
+                    Log.i("###", "-->>DataEventBus-->>doFindData");
                     try {
                         Thread.sleep(60000);
 
 //                        homePresenter.getTicker(selectMarket);
-                        homePresenter.getGateRate();
+//                        homePresenter.getGateRate();
+                        doFindData();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -461,4 +525,44 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
             }
         }
     }
+
+
+
+    Handler myHandler = new Handler() {
+        public void handleMessage(Message msg) {
+            switch (msg.what) {
+                case 1:
+                    //更新到界面
+                    if(null != firstData){
+                        lastNum = firstData.getLast();
+//                        last.setText("最新:"+firstData.getLast());
+//                        high.setText("最高:"+firstData.getHighestBid());
+//                        low.setText("最低: "+firstData.getLowestAsk());
+                        last.setText("新买:"+firstData.getHighestBid());
+                        high.setText("新卖:"+firstData.getLowestAsk());
+                        low.setText("近低: "+firstData.getLow24hr()+"近高: "+firstData.getHigh24hr());
+                        //振动
+                        boolean flag1 = Double.parseDouble(lastNum) - Double.parseDouble(setHighNum)> 0;
+                        boolean flag2 = Double.parseDouble(lastNum) - Double.parseDouble(setLowNum) < 0;
+                        if((flag1 || flag2) && !cancelFlag){
+                            /*
+                             * 想设置震动大小可以通过改变pattern来设定，如果开启时间太短，震动效果可能感觉不到
+                             * */
+
+                            long [] pattern = {100,400,100,400};   // 停止 开启 停止 开启
+                            vibrator.vibrate(pattern,2);           //重复两次上面的pattern 如果只想震动一次，index设为-1
+                        }else {
+                            vibrator.cancel();
+                        }
+
+
+                    }
+                    hiddenDialog();
+                    EventBus.getDefault().post(new DataEvent(DataEvent.TYPE_SHUAXIN_HANGQING));
+
+                    break;
+            }
+            super.handleMessage(msg);
+        }
+    };
 }

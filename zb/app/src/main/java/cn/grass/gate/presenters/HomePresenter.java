@@ -2,6 +2,7 @@ package cn.grass.gate.presenters;
 
 import com.weedys.weedlibrary.http.RequestCallBack;
 
+import java.util.Date;
 import java.util.HashMap;
 
 import cn.grass.gate.GrassApp;
@@ -10,6 +11,7 @@ import cn.grass.gate.beans.HomeBean;
 import cn.grass.gate.beans.Price;
 import cn.grass.gate.http.Api;
 import cn.grass.gate.http.HttpManager;
+import cn.grass.gate.model.HuoBiData;
 import cn.grass.gate.utils.GsonImpl;
 import cn.grass.gate.views.HomeView;
 
@@ -98,13 +100,14 @@ public class HomePresenter {
     public int TOKEN_GET_GATEIO_USDTCNY=0x04;
     public void getUSDTCNY(){
         HashMap<String,String> map=new HashMap<>();
-        HttpManager.getInstance().getRequestForGson(GrassApp.getInstance(), Api.URL_GET_GATEIO_CNY,
+        HttpManager.getInstance().getRequestForGson(GrassApp.getInstance(), Api.URL_GET_GATEIO_USDTCNY,
                 map, new RequestCallBack() {
                     @Override
                     public void onSuccess(int callId, String content, String msg) {
-                        Price bean = GsonImpl.get().toObject(content,Price.class);
+                        HuoBiData bean = GsonImpl.get().toObject(content,HuoBiData.class);
+                        bean.setCreateDate(new Date());
                         if(view!=null){
-                            view.price(bean);
+                            view.huoBiData(bean);
                             return;
                         }
                     }

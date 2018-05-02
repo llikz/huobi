@@ -18,7 +18,8 @@
     <cn.grass.gate.widgets.ImageCycleView
         android:id="@+id/ad_view"
         android:layout_width="fill_parent"
-        android:layout_height="120dp" />
+        android:layout_height="120dp"
+        android:visibility="gone"/>
 
 
 
@@ -241,7 +242,7 @@
             android:layout_toRightOf="@id/hightv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/zb_int_hint"
+            android:hint="@string/zb_int_hint_max"
             />
         <TextView
             android:id="@+id/highertext"
@@ -269,7 +270,7 @@
             android:layout_toRightOf="@id/lowtv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/zb_int_hint"
+            android:hint="@string/zb_int_hint_min"
             />
         <TextView
             android:id="@+id/lowertext"

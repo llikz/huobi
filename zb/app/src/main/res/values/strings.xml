@@ -134,6 +134,8 @@
     <string name="zb_start">开启监控</string>
     <string name="zb_cancel_hint">取消振动后记得重新开启监控模式</string>
     <string name="zb_start_hint">开启监控模式</string>
+    <string name="zb_int_hint_min">请输入数字,默认为6</string>
+    <string name="zb_int_hint_max">请输入数字,默认为7</string>
 
 
 
