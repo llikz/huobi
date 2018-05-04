@@ -77,6 +77,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     private EditText lowet;
     private TextView highertext;
     private TextView lowertext;
+    private TextView loadingtv;
     private String setLowNum="6";//默认数据
     private String setHighNum ="7";//默认数据
     private String selectMarket;
@@ -216,6 +217,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
         startbt.setOnClickListener(this);
         highertext = (TextView)v.findViewById(R.id.highertext);
         lowertext = (TextView)v.findViewById(R.id.lowertext);
+        loadingtv = (TextView)v.findViewById(R.id.loadingtv);
         highet.addTextChangedListener(new TextWatcher() {
 
             @Override
@@ -472,6 +474,16 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener, 
     @Override
     public void huoBiData(HuoBiData data) {
         if(null != data){
+            long suiji = System.currentTimeMillis();
+            if(suiji % 3 == 0){
+                loadingtv.setText("正在加载...");
+            }else if(suiji % 3 == 1){
+                loadingtv.setText("正在加载..");
+            }else{
+                loadingtv.setText("正在加载");
+            }
+
+
             lastNum = data.getLast()+"";
             last.setText("新买:"+data.getHighestBid());
             high.setText("新卖:"+data.getLowestAsk());
